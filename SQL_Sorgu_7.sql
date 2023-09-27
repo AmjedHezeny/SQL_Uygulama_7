@@ -1,6 +1,6 @@
--- While D�ng�s�: SQL sorgu dilinde, C# programlama dilinde oldu?u gibi belirli ko?ullara ba?l? olarak sorgu komutlar?n? tekrarlayabiliriz. While d�ng�s�, ko?ul do?ru oldu?u s�rece i�indeki kod blo?unu i?ler.
+-- While Döngüsü: SQL sorgu dilinde, C# programlama dilinde olduğu gibi belirli koşullara bağlı olarak sorgu komutlarını tekrarlayabiliriz. While döngüsü, koşul doğru olduğu sürece içindeki kod bloğunu işler.
 
--- �rnek: 10'dan geriye do?ru yazd?ran bir while d�ng�s�
+-- Örnek: 10'dan geriye doğru yazdıran bir while döngüsü
 declare @sayi int
 set @sayi = 10
 while (@sayi > 0)
@@ -9,9 +9,9 @@ begin
     set @sayi = @sayi - 1
 end
 
--- Break Komutu: D�ng�y� sonland?rmak i�in kullan?l?r.
+-- Break Komutu: Döngüyü sonlandırmak için kullanılır.
 
--- �rnek: 1'den 10'a kadar yazd?ran bir while d�ng�s�. Ancak d�ng� 5'e geldi?inde sona ersin
+-- Örnek: 1'den 10'a kadar yazdıran bir while döngüsü. Ancak döngü 5'e geldiğinde sona ersin
 declare @sayac int
 set @sayac = 1
 while (@sayac < 10)
@@ -24,34 +24,34 @@ begin
     set @sayac = @sayac + 1
 end
 
--- Stored Procedure (Sakl? Prosed�r): SQL sorgu dilinde birden fazla i?lemin tan?mland??? objelerdir. SP'ler iste?e ba?l? olarak parametre alabilirler. Insert, Update, Delete veya Select i?lemleri yap?labilir veya hepsini bir arada kullanabilirsiniz. Herhangi bir k?s?tlama yoktur.
+-- Stored Procedure (Saklı Prosedür): SQL sorgu dilinde birden fazla işlemin tanımlandığı objelerdir. SP'ler isteğe bağlı olarak parametre alabilirler. Insert, Update, Delete veya Select işlemleri yapılabilir veya hepsini bir arada kullanabilirsiniz. Herhangi bir kısıtlama yoktur.
 
--- SP'leri y�netme:
+-- SP'leri yönetme:
 -- 1) Create Procedure
 -- 2) Alter Procedure
 -- 3) Drop Procedure
 
--- �rnek: Kategori bilgisine g�re �r�nleri listeleyen bir SP
+-- Örnek: Kategori bilgisine göre ürünleri listeleyen bir SP
 create proc UrunleriListele(@catID int)
 as
 begin
     select * from Products where CategoryID=@catID
 end
 
--- Alter Procedure: Olu?turulmu? olan SP'yi d�zenlemek veya g�ncellemek i�in kullan?l?r.
+-- Alter Procedure: Oluşturulmuş olan SP'yi düzenlemek veya güncellemek için kullanılır.
 alter procedure UrunleriListele (@catID int , @supID int )
 as
 begin
     select * from Products where CategoryID=@catID and SupplierID=@supID
 end
 
--- Drop Procedure: Olu?turulmu? olan SP'yi silmek i�in kullan?l?r.
+-- Drop Procedure: Oluşturulmuş olan SP'yi silmek için kullanılır.
 Drop proc UrunleriListele
 
--- Functions (Fonksiyonlar): SQL sorgu dilinde, C# gibi kendini tekrarlayan komut sat?rlar?n? bir paket sistemi haline getirmek i�in kullan?l?r. Fonksiyonlar, SP'lerden en b�y�k fark? sorgu i�erisinde kullan?labilmeleridir.
+-- Functions (Fonksiyonlar): SQL sorgu dilinde, C# gibi kendini tekrarlayan komut satırlarını bir paket sistemi haline getirmek için kullanılır. Fonksiyonlar, SP'lerden en büyük farkı sorgu içerisinde kullanılabilmeleridir.
 
--- 1) Geriye De?er D�nd�ren Fonksiyonlar:
--- �rnek: 2 Say?y? toplay?p sonucu geriye d�nd�ren bir fonksiyon
+-- 1) Geriye Değer Döndüren Fonksiyonlar:
+-- Örnek: 2 Sayıyı toplayıp sonucu geriye döndüren bir fonksiyon
 create function fnTopla(@sayi1 int , @sayi2 int)
 returns int
 as
@@ -59,8 +59,8 @@ begin
     return(@sayi1+@sayi2)
 end
 
--- 2) Geriye Sorgu D�nd�ren Fonksiyonlar:
--- �rnek: M�?teri Id bilgisine g�re sipari?leri listeleyen bir fonksiyon
+-- 2) Geriye Sorgu Döndüren Fonksiyonlar:
+-- Örnek: Müşteri Id bilgisine göre siparişleri listeleyen bir fonksiyon
 create function MusteriyeGoreSiparis (@musteriID nchar(5))
 returns table
 as
@@ -69,14 +69,14 @@ return
     select * from Orders where CustomerID=@musteriID
 )
 
--- Datediff: Tarih bilgisine ba?l? kalarak iki tarih aras?ndaki fark? bulman?z? sa?lar. Bu fonksiyonu kullanmak i�in 3 farkl? parametreye ihtiyac?n?z var.
+-- Datediff: Tarih bilgisine bağlı kalarak iki tarih arasındaki farkı bulmanızı sağlar. Bu fonksiyonu kullanmak için 3 farklı parametreye ihtiyacınız var.
 
--- �rnek: ?ki tarih aras?ndaki fark? g�n, ay, y?l olarak ayr? ayr? hesaplayal?m
-select DATEDIFF(DAY,'2013-03-18','2023-09-26') as 'G�n Fark?'
-select DATEDIFF(MONTH,'2013-03-18','2023-09-26') as 'Ay Fark?'
-select DATEDIFF(YEAR,'2013-03-18','2023-09-26') as 'Y?l Fark?'
+-- Örnek: İki tarih arasındaki farkı gün, ay, yıl olarak ayrı ayrı hesaplayalım
+select DATEDIFF(DAY,'2013-03-18','2023-09-26') as 'Gün Farkı'
+select DATEDIFF(MONTH,'2013-03-18','2023-09-26') as 'Ay Farkı'
+select DATEDIFF(YEAR,'2013-03-18','2023-09-26') as 'Yıl Farkı'
 
--- Backup: SQL sorgu dili i�erisinde komut sat?r? arac?l???yla veritaban? yede?ini alabilirsiniz. Yedek alma i?leminde dosya ad?n?n '.bak' uzant?s?nda olmas? gerekmektedir.
+-- Backup: SQL sorgu dili içerisinde komut satırı aracılığıyla veritabanı yedeğini alabilirsiniz. Yedek alma işleminde dosya adının '.bak' uzantısında olması gerekmektedir.
 
--- �rnek: Veritaban?n? yedekleme
-backup database NORTHWND to disk = 'C:\Users\sadullah.sener\Desktop\Yeni klas�r\TestDataBase_260923.bak'
+-- Örnek: Veritabanını yedekleme
+backup database NORTHWND to disk = 'C:\Users\sadullah.sener\Desktop\Yeni klasör\TestDataBase_260923.bak'
