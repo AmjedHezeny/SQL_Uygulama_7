@@ -1,4 +1,4 @@
--- While Döngüsü: SQL sorgu dilinde, C# programlama dilinde olduğu gibi belirli koşullara bağlı olarak sorgu komutlarını tekrarlayabiliriz. While döngüsü, koşul doğru olduğu sürece içindeki kod bloğunu işler.
+-- While Döngüsü: SQL sorgu dilinde , C# programlama dilinde olduğu gibi belirli koşullara bağlı olarak sorgu komutlarını tekrarlayabiliriz. While döngüsü, koşul doğru olduğu sürece içindeki kod bloğunu işler.
 
 -- Örnek: 10'dan geriye doğru yazdıran bir while döngüsü
 declare @sayi int
