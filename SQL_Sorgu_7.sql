@@ -60,7 +60,7 @@ begin
 end
 
 -- 2) Geriye Sorgu Döndüren Fonksiyonlar:
--- Örnek: Müşteri Id bilgisine göre siparişleri listeleyen bir fonksiyon
+-- Örnek: Müşteri Id bilgisine göre siparişleri listeleyen bir fonksiyon.
 create function MusteriyeGoreSiparis (@musteriID nchar(5))
 returns table
 as
